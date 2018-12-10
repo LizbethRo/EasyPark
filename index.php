@@ -112,9 +112,40 @@ if (!empty($_POST['txtUsuario']) && !empty($_POST['txtContrasena'])) {
                 	           <div class="col-12" >
 												
 												<input style="background-color: #00CED1"  type="submit" id="button" value="LOGIN">
+
+												
+													<button style="background-color: #00CED1" id="Facebook">Entrar con Facebook</button>
 											
                        </form>
 											</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBVb93rzTO8H0IN-6cqHMOQbmB0Cf35Ljc",
+    authDomain: "easypark-5b1d0.firebaseapp.com",
+    databaseURL: "https://easypark-5b1d0.firebaseio.com",
+    projectId: "easypark-5b1d0",
+    storageBucket: "easypark-5b1d0.appspot.com",
+    messagingSenderId: "632434765933"
+  };
+  firebase.initializeApp(config);
+
+  document.getElementById("Facebook").addEventListener("click",
+  	function(){
+  		var provider = new firebase.auth.FacebookAuthProvider();
+
+  		firebase.auth().signInWithPopup(provider).then(function(result){
+  			alert("Exito");
+  			console.log(result);
+  		}).catch(function(error){
+  			alert("Error");
+  			console.log(error);
+  		})
+  	})
+</script>
 				
 
 				
